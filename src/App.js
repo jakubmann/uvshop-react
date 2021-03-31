@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './pages/Home'
+import Products from './pages/Products'
+
+export default class App extends React.Component {
+  state = {
+    checkout: { lineItems: [] },
+    products: [],
+    shop: {}
+  }
+
+  componentDidMount() {
+    //create checkout
+    this.props.client.checkout.create()
+    .then(checkout => {
+      this.setState({ checkout }) 
+    })
+
+    //fetch products
+    this.props.client.product.fetchAll()
+    .then(products => {
+      this.setState({ products })
+      console.log(this.state.products)
+    })
+  }
+
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/products">
+            <Products />
+          </Route> 
+          <Route path="/">
+            <Home products={this.state.products}/>
+          </Route>
+        </Switch>
+      </Router>
+    )
+  }
 }
 
-export default App;

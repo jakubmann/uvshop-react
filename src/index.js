@@ -1,12 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Client from 'shopify-buy'
+import './style/style.scss'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+
+const client = Client.buildClient({
+  domain: 'uv-testing.myshopify.com',
+  storefrontAccessToken: '45d55c3968443e1908bede7f65bc2184',
+  //language: ''
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App client = { client }/>
   </React.StrictMode>,
   document.getElementById('root')
 );
