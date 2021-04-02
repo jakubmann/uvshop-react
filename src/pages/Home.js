@@ -1,33 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default class Home extends React.Component {
-    state = {
-        filteredProducts: []
-    }
+const Home = (props) => {
+    const [visibleProducts, setVisibleProducts] = useState([])
 
-    filterProducts = (group) => {
-        this.setState({
-            products: this.props.products.filter(p => { /* podminka pro filtrovani vsech produktu */})
-        })
+    const filterProducts = (group) => {
+//        setVisibleProducts(props.products.filter(p => { nejakej function na filtrovani produktu }))
     }
     
-    render() {
-        return (
-            <div className="homepage">
-                <div className="product-select">
-                    <div className="product-select__groups">
-                        <div className="product-select__group" onClick={this.filterProducts('kosile')}>
-                            kosile
-                        </div>
+    return (
+        <div className="homepage">
+            <div className="product-select">
+                <div className="product-select__groups">
+                    <div className="product-select__group" onClick={filterProducts('kosile')}>
+                        kosile
                     </div>
                 </div>
-                
-                <div className="trunk">
-                    {this.props.products.map(p => {
-                        return <div className="product">{p.title}</div>
-                    })}
-                </div>
             </div>
-        )
-    }
+            
+            <div className="trunk">
+                {props.products.map(p => {
+                    return <div className="product">{p.title}</div>
+                })}
+            </div>
+        </div>
+    )
 }
+
+export default Home

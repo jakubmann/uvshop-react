@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import Home from './pages/Home'
-import Products from './pages/Products'
+import Product from './pages/Product'
 
 export default class App extends React.Component {
   state = {
@@ -30,8 +30,8 @@ export default class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/products">
-            <Products />
+          <Route path="/product/:id">
+            <Product />
           </Route> 
           <Route path="/">
             <Home products={this.state.products}/>
