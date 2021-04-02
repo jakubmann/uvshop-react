@@ -1,15 +1,28 @@
-import { render } from '@testing-library/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-const Product = () => {
-    let { id } = useParams()
+import Tabule from '../components/Tabule'
+import Images from '../components/Images'
+import Cart from '../components/Cart'
 
-    return (
-        <div className="product">
-            { id }
-        </div>
-    )
+const Product = (props) => {
+    const { handle } = useParams()
+    const product = props.products.find(p => p.handle === handle)
+
+    if (product){
+        return (
+            <div className="product">
+                <Images images={product.images} />
+                <div className="vetev">
+                    <Tabule product={product}/>
+                </div>
+
+                <Cart />
+            </div>
+        )
+    } else {
+        return (<div>loading...</div>)
+    }
 }
 
 export default Product

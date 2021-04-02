@@ -30,8 +30,8 @@ export default class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/product/:id">
-            <Product />
+          <Route path="/product/:handle">
+            <Product products={this.state.products}/>
           </Route> 
           <Route path="/">
             <Home products={this.state.products}/>
