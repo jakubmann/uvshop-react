@@ -1,10 +1,12 @@
 .product-select {
+  pointer-events: none;
   position: fixed;
   width: 100vw;
   height: 100%;
   background: no-repeat top/100% url("../assets/main/vetev.png");
 
   &__groups {
+    pointer-events: all;
     margin-top: 10%;
     display: flex;
     width: 100%;
