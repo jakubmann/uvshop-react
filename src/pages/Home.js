@@ -4,23 +4,37 @@ const Home = (props) => {
     const [visibleProducts, setVisibleProducts] = useState([])
 
     const filterProducts = (group) => {
-//        setVisibleProducts(props.products.filter(p => { nejakej function na filtrovani produktu }))
+
+        setVisibleProducts(props.products.filter(p => p.productType === group))
+
     }
     
     return (
         <div className="homepage">
             <div className="product-select">
                 <div className="product-select__groups">
-                    <div className="product-select__group" onClick={filterProducts('kosile')}>
-                        kosile
+                    <div className="product-select__group">
+                        <a onClick={() => filterProducts('Kosile')}>
+                            kosile
+                        </a>
+                    </div>
+                    <div className="product-select__group">
+                        <a onClick={() => filterProducts("mikina")}>
+                            mikina
+                        </a>
+                    </div>
+                    <div className="product-select__group">
+                        <a onClick={() => console.log(props.products)}>
+                            piko
+                        </a>
                     </div>
                 </div>
-            </div>
-            
+            </div>   
+
             <div className="trunk">
-                {props.products.map(p => {
-                    return <div className="product">{p.title}</div>
-                })}
+                {visibleProducts.map(p => {
+                    return <div className="product">{p.title} <img src={p.images[0].src} width="200px" height="200px"></img></div>
+                } )}
             </div>
         </div>
     )
