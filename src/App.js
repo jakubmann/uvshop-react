@@ -31,7 +31,7 @@ export default class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/product/:handle">
-            <Product products={this.state.products}/>
+            <Product products={this.state.products} client={this.props.client} />
           </Route> 
           <Route path="/">
             <Home products={this.state.products}/>
