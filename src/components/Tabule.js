@@ -40,6 +40,10 @@ const Tabule = props => {
         )
     })
 
+    const addToCart = () => {
+        props.cart(product, variant, quantity);
+    }
+
     return(
         <div className="tabule">
             <div className="tabule__content">
@@ -48,6 +52,14 @@ const Tabule = props => {
                 { VariantSelectors }
                 <input className="tabule__quantity" min="1" type="number" value={quantity} onChange={handleQuantity}></input>
                 <h2 className="tabule__price">{variant.price}</h2>
+
+                <button onClick={ () => addToCart() }>
+                    Add To Cart
+                </button>
+                <button onClick={ () => console.log("todo") }>
+                    go to cart
+                </button>
+
             </div>
         </div>
     )
