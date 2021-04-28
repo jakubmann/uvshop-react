@@ -1,0 +1,35 @@
+.cartpage {
+    margin: 20px;
+
+    &__products {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__product {
+        margin: 10px;
+        border: 1px solid grey;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+    }
+
+    &__checkout {
+        border: none;
+        display: block;
+        bottom: 10px;
+        border-radius: 100px;
+        padding: 20px 30px 20px 30px;
+        background-color: $green;
+        font-size: 20px;
+        font-weight: bolder;
+        margin: 0px auto;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}
