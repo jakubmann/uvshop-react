@@ -14,7 +14,7 @@ const Product = (props) => {
             <div className="product">
                 <Images images={product.images} />
                 <div className="vetev">
-                    <Tabule product={product} client={props.client} cart={props.cart}/>
+                    <Tabule product={product} client={props.client} addToCart={props.addToCart}/>
                 </div>
 
                 <Cart />

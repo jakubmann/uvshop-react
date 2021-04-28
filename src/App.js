@@ -28,19 +28,15 @@ export default class App extends React.Component {
     })
   }
 
-  addToCart = (product, variant, quantity) => {
-    let newObj = {
-      product: product,
-      variant: variant,
-      quantity: quantity
-    }
+  addVariantToCart(variantId, quantity) {
+    const lineItemsToAdd = [{variantId, quantity: parseInt(quantity, 10)}]
+    const checkoutId = this.state.checkout.id
 
-    let newCart = this.state.cart;
-    newCart.push(newObj);
-
-    this.setState({ cart: newCart });
-    localStorage.setItem("cart", JSON.stringify(this.state.cart));
-    console.log(this.state.cart);
+    return this.props.client.checkout.addLineItems(checkoutId, lineItemsToAdd).then(res => {
+      this.setState({
+        checkout: res,
+      })
+    })
   }
 
   render() {
@@ -48,7 +44,7 @@ export default class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/product/:handle">
-            <Product products={this.state.products} client={this.props.client} cart={this.addToCart}/>
+            <Product products={this.state.products} client={this.props.client} addToCart={this.addVariantToCart}/>
           </Route> 
 
           <Route path="/cart">

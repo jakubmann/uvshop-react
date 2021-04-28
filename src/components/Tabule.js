@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import VariantSelector from './VariantSelector'
 
 const Tabule = props => {
@@ -40,9 +40,6 @@ const Tabule = props => {
         )
     })
 
-    const addToCart = () => {
-        props.cart(product, variant, quantity);
-    }
 
     return(
         <div className="tabule">
@@ -53,7 +50,7 @@ const Tabule = props => {
                 <input className="tabule__quantity" min="1" type="number" value={quantity} onChange={handleQuantity}></input>
                 <h2 className="tabule__price">{variant.price}</h2>
 
-                <button onClick={ () => addToCart() }>
+                <button onClick={ () => props.addToCart(variant.id, quantity) }>
                     Add To Cart
                 </button>
                 <button onClick={ () => console.log("todo") }>
