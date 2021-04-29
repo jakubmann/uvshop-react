@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import VariantSelector from './VariantSelector'
 
 const Tabule = props => {
     //default prop objects
     const product = props.product
     const variants = product.variants
+    const history = useHistory()
 
     let defaultOptions = []
 
@@ -53,8 +55,8 @@ const Tabule = props => {
                 <button onClick={ () => props.addToCart(variant.id, quantity) }>
                     Add To Cart
                 </button>
-                <button onClick={ () => console.log("todo") }>
-                    go to cart
+                <button onClick={ () => history.push("/cart/") }>
+                    Cart
                 </button>
 
             </div>

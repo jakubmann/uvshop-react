@@ -1,23 +1,35 @@
 import React from 'react'
+import LineItem from '../components/LineItem'
 
-const CartPage = (props) => {
-    let cart = JSON.parse(localStorage.getItem("cart"));
+const CartPage = ({ checkout }) => {
+
+
+    let LineItems = () => {
+        return (
+            checkout.lineItems.map((line_item) => {
+                return (
+                    <LineItem
+                        key={line_item.id.toString()}
+                        line_item={line_item}
+                    />
+                )
+            })
+        )
+
+    }
 
     return (
         <div className="cartpage">
-            <div className="cartpage__products">
-                {
-                    console.table(cart),
-                    
-                    cart.map(p => {
-                        return <div className="cartpage__product"><p>product: {p.product.title} | variant: {p.variant.title} | quant: {p.quantity} </p></div>
-                    }) 
-            
-                }
+            <div className="cartpage__left">
+                <div className="cartpage__products">
+                    <LineItems />
+                </div>
             </div>
-            <button onClick={() => alert("BUY")} className="cartpage__checkout">
-                BUY
-            </button>
+            <div className="cartpage__right">
+                <button onClick={() => window.open(checkout.webUrl)} className="cartpage__checkout">
+                    BUY
+                </button>
+            </div>
         </div>
     )
 }

@@ -18,6 +18,7 @@ export default class App extends React.Component {
     this.props.client.checkout.create()
     .then(checkout => {
       this.setState({ checkout }) 
+      console.log(checkout)
     })
 
     //fetch products
@@ -28,7 +29,7 @@ export default class App extends React.Component {
     })
   }
 
-  addVariantToCart(variantId, quantity) {
+  addVariantToCart = (variantId, quantity) => {
     const lineItemsToAdd = [{variantId, quantity: parseInt(quantity, 10)}]
     const checkoutId = this.state.checkout.id
 
@@ -48,7 +49,7 @@ export default class App extends React.Component {
           </Route> 
 
           <Route path="/cart">
-            <CartPage cart={this.props.cart}/>
+            <CartPage  checkout={this.state.checkout}/>
           </Route> 
 
           <Route path="/">

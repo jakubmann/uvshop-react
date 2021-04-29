@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 const Images = props => {
     const images = props.images
-    console.log(images)
     const [preview, selectPreview] = useState(images[0])
     const [previewIndex, setPreviewIndex] = useState(0)
 
