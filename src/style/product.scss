@@ -10,7 +10,7 @@
 		height: 100vh;
 		bottom: 0;
 		left: 0;
-		background-image: url("../assets/product/vetev_a_pozadi.png");
+		background-image: url('../assets/product/vetev_a_pozadi.png');
 		background-size: auto 100vh;
 		background-repeat: no-repeat;
 		background-position-y: bottom;
@@ -18,7 +18,7 @@
 		pointer-events: none;
 
 		.tabule {
-			background-image: url("../assets/product/tabule.png");
+			background-image: url('../assets/product/tabule.png');
 			background-repeat: no-repeat;
 			background-position-y: bottom;
 			background-position-x: left;
@@ -38,7 +38,7 @@
 
 			&__title {
 				font: {
-					family: "Comic Sans MS", sans-serif;
+					family: 'Comic Sans MS', sans-serif;
 					size: 4vh;
 					weight: bolder;
 				}
