@@ -1,66 +1,61 @@
-import React from 'react'
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import React, {useState, useCallback, useEffect} from 'react'
+import {Switch, Route, BrowserRouter as Router} from 'react-router-dom'
 
 import Home from './pages/Home'
 import Product from './pages/Product'
 import CartPage from './pages/CartPage'
 
-export default class App extends React.Component {
-	state = {
-		checkout: { lineItems: [] },
-		products: [],
-		cart: [],
-		shop: {},
-	}
+const App = (props) => {
+  const {client} = props
+  const [checkout, setCheckout] = useState({})
+  const [products, setProducts] = useState([])
 
-	componentDidMount() {
-		//create checkout
-		this.props.client.checkout.create().then(checkout => {
-			this.setState({ checkout })
-			console.log(checkout)
-		})
+  const initCheckout = useCallback(async () => {
+    const checkout = await client?.checkout?.create()
+    setCheckout(checkout)
+  }, [client.checkout])
 
-		//fetch products
-		this.props.client.product.fetchAll().then(products => {
-			this.setState({ products })
-			console.log(this.state.products)
-		})
-	}
+  const initProducts = useCallback(async () => {
+    const products = await client?.product?.fetchAll()
+    setProducts(products)
+  }, [client.product])
 
-	addVariantToCart = (variantId, quantity) => {
-		const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }]
-		const checkoutId = this.state.checkout.id
+  useEffect(() => {
+    initCheckout()
+    initProducts()
+  }, [initProducts, initCheckout])
 
-		return this.props.client.checkout
-			.addLineItems(checkoutId, lineItemsToAdd)
-			.then(res => {
-				this.setState({
-					checkout: res,
-				})
-			})
-	}
-
-	render() {
-		return (
-			<Router>
-				<Switch>
-					<Route path="/product/:handle">
-						<Product
-							products={this.state.products}
-							client={this.props.client}
-							addToCart={this.addVariantToCart}
-						/>
-					</Route>
-
-					<Route path="/cart">
-						<CartPage checkout={this.state.checkout} />
-					</Route>
-
-					<Route path="/">
-						<Home products={this.state.products} />
-					</Route>
-				</Switch>
-			</Router>
-		)
-	}
+  const addVariantToCart = async (variantId, quantity) => {
+    const newCheckout = await client?.checkout?.addLineItems(checkout?.id, [
+      {variantId, quantity: parseInt(quantity, 10)},
+    ])
+    console.log('client?')
+    console.log(client.checkout)
+    setCheckout(newCheckout)
+  }
+  return (
+    <Router>
+      <Switch>
+        <Route path="/product/:handle">
+          <Product
+            products={products}
+            client={client}
+            addToCart={addVariantToCart}
+          />
+        </Route>
+        <Route path="/cart">
+          <CartPage
+            client={client}
+            checkout={checkout}
+            setCheckout={setCheckout}
+          />
+        </Route>
+        <Route path="/">
+          <Home products={products} />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
+
+export default App

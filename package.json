@@ -21,8 +21,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"format": "prettier --check .",
-		"format:fix": "prettier --write ."
+		"format": "eslint src/.",
+		"format:fix": "eslint src/. --fix"
 	},
 	"browserslist": {
 		"production": [
@@ -36,7 +36,34 @@
 			"last 1 safari version"
 		]
 	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"prettier"
+		],
+		"plugins": [
+			"prettier"
+		],
+		"rules": {
+			"prettier/prettier": [
+				"error"
+			],
+			"react-hooks/rules-of-hooks": "error",
+			"react-hooks/exhaustive-deps": "warn"
+		}
+	},
+	"prettier": {
+		"trailingComma": "all",
+		"tabWidth": 2,
+		"semi": false,
+		"singleQuote": true,
+		"bracketSpacing": false,
+		"arrowParens": "always"
+	},
 	"devDependencies": {
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^3.4.0",
+		"eslint-plugin-react-hooks": "^4.2.0",
 		"prettier": "^2.3.1"
 	}
 }
