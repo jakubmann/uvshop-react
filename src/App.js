@@ -10,20 +10,16 @@ const App = (props) => {
   const [checkout, setCheckout] = useState({})
   const [products, setProducts] = useState([])
 
-  const initCheckout = useCallback(async () => {
+  const initCheckoutAndProducts = useCallback(async () => {
     const checkout = await client?.checkout?.create()
     setCheckout(checkout)
-  }, [client.checkout])
-
-  const initProducts = useCallback(async () => {
     const products = await client?.product?.fetchAll()
     setProducts(products)
-  }, [client.product])
+  }, [client.checkout, client.product])
 
   useEffect(() => {
-    initCheckout()
-    initProducts()
-  }, [initProducts, initCheckout])
+    initCheckoutAndProducts()
+  }, [initCheckoutAndProducts])
 
   const addVariantToCart = async (variantId, quantity) => {
     const newCheckout = await client?.checkout?.addLineItems(checkout?.id, [
