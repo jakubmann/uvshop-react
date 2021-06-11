@@ -3,14 +3,18 @@ import LineItem from '../components/LineItem'
 
 const CartModal = ({setCheckout, client, checkout, visible}) => {
     const [total, setTotal] = useState(0)
+    const countTotal = (lineItems) =>
+        lineItems.reduce(
+            (acc, val) => acc + val.variant.price * val.quantity,
+            0,
+        )
+
     useEffect(() => {
-        let newTotal = 0
-        checkout?.lineItems?.forEach((item) => {
-            newTotal += item.variant.price * item.quantity
-        })
-        console.log('total: ', total)
-        setTotal(newTotal.toFixed(2))
-    }, [checkout])
+        const newTotal = checkout?.lineItems
+            ? countTotal(checkout.lineItems)
+            : 0
+        setTotal(newTotal)
+    }, [checkout.lineItems])
 
     return (
         <div
