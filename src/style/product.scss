@@ -1,92 +1,182 @@
+.cart {
+    background-image: url('../assets/product/cart.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 36vw;
+    height: 35vh;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+}
+
 .product {
-	width: 100vw;
-	height: 100vh;
-	background: transparent;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
 
-	.vetev {
-		background: transparent;
-		position: absolute;
-		width: 100%;
-		height: 100vh;
-		bottom: 0;
-		left: 0;
-		background-image: url('../assets/product/vetev_a_pozadi.png');
-		background-size: auto 100vh;
-		background-repeat: no-repeat;
-		background-position-y: bottom;
-		background-position-x: left;
-		pointer-events: none;
+    .vetev {
+        background: transparent;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        bottom: 0;
+        left: 0;
+        background-image: url('../assets/product/vetev_a_pozadi.png');
+        background-size: auto 100vh;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-position-x: left;
+        pointer-events: none;
 
-		.tabule {
-			background-image: url('../assets/product/tabule.png');
-			background-repeat: no-repeat;
-			background-position-y: bottom;
-			background-position-x: left;
-			background-size: auto 100vh;
-			height: 100vh;
-			width: 100%;
+        .tabule {
+            background-image: url('../assets/product/tabule.png');
+            background-repeat: no-repeat;
+            background-position-y: bottom;
+            background-position-x: left;
+            background-size: auto 100vh;
+            height: 100vh;
+            width: 100%;
 
-			&__content {
-				height: 60vh;
-				width: 40vh;
-				position: absolute;
-				left: 121vh;
-				top: 5vh;
-				transform: rotate(-2.5deg);
-				pointer-events: all;
-			}
+            &__bottom {
+                display: flex;
+                width: 90%;
+                margin: 0 auto;
+            }
 
-			&__title {
-				font: {
-					family: 'Comic Sans MS', sans-serif;
-					size: 4vh;
-					weight: bolder;
-				}
-				padding: 2vh;
-			}
+            &__quantity {
+                font-family: 'Crimson Pro', serif;
+                font-weight: bold;
+                height: 90%;
+                padding: 17px 14px;
+                display: inline-block;
+                outline: 0;
+                border: 1px solid #000000;
+                border-radius: 14px;
+                background: rgba(0, 0, 0, 0.1);
+                color: #000000;
+                appearance: none;
+            }
 
-			&__desc {
-				font-size: 2.5vh;
-				height: 40%;
-				overflow-y: scroll;
-				margin: 2vh;
-			}
-		}
-	}
+            &__content {
+                font-family: 'Crimson Pro', serif;
+                height: 60vh;
+                width: 40vh;
+                position: absolute;
+                left: 121vh;
+                top: 5vh;
+                transform: rotate(-2.5deg);
+                pointer-events: all;
+            }
+
+            &__title {
+                font: {
+                    family: 'Crimson Pro', serif;
+                    size: 4vh;
+                    weight: bolder;
+                }
+                padding: 2vh;
+            }
+
+            &__desc {
+                font-size: 2.5vh;
+                height: 40%;
+                overflow-y: scroll;
+                margin: 2vh;
+            }
+            .select {
+                position: relative;
+                display: inline-block;
+                height: 90%;
+            }
+            .select select {
+                font-family: 'Crimson Pro', serif;
+                display: inline-block;
+                cursor: pointer;
+                padding: 17px 14px;
+                outline: 0;
+                border-radius: 14px;
+                color: #000000;
+                appearance: none;
+                background: rgba(0, 0, 0, 0.1);
+                border: 1px solid black;
+                font-weight: bold;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                height: 90%;
+            }
+            .select select::-ms-expand {
+                display: none;
+            }
+            .select select:disabled {
+                opacity: 0.9;
+                pointer-events: none;
+            }
+            .select_arrow {
+                position: absolute;
+                top: 16px;
+                right: 15px;
+                pointer-events: none;
+                border-style: solid;
+                border-width: 8px 5px 0px 5px;
+                border-color: #7b7b7b transparent transparent transparent;
+            }
+            .select select:hover ~ .select_arrow,
+            .select select:focus ~ .select_arrow {
+                border-top-color: #000000;
+            }
+            .select select:disabled ~ .select_arrow {
+                border-top-color: #cccccc;
+            }
+            &__add {
+                font-family: 'Crimson Pro', serif;
+                padding: 17px 14px;
+                display: inline-block;
+                outline: 0;
+                border: 0px solid #000000;
+                border-radius: 14px;
+                border: 1px solid black;
+                background: rgba(0, 0, 0, 0.1);
+                font-weight: bold;
+                color: #000000;
+                appearance: none;
+            }
+        }
+    }
 }
 
 .images {
-	position: absolute;
-	top: 8.3vh;
-	left: 20vh;
-	overflow: hidden;
+    position: absolute;
+    top: 8.3vh;
+    left: 20vh;
+    overflow: hidden;
 
-	&__large {
-		width: 65vh;
-		height: 63.9vh;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-	}
+    &__large {
+        width: 65vh;
+        height: 63.9vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
 
-	&__small {
-		height: 23vh;
-		background-color: red;
-		transition: transform 1s;
-		white-space: nowrap;
+    &__small {
+        height: 23vh;
+        background-color: red;
+        transition: transform 1s;
+        white-space: nowrap;
 
-		.smallimage {
-			width: 33.3333%;
-			height: 23vh;
-			background-color: black;
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center;
-			display: inline-block;
-			pointer-events: all;
-			&:hover {
-				cursor: pointer;
-			}
-		}
-	}
+        .smallimage {
+            width: 33.3333%;
+            height: 23vh;
+            background-color: black;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: inline-block;
+            pointer-events: all;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
 }
