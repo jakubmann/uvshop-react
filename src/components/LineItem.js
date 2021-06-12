@@ -47,7 +47,9 @@ const LineItem = (props) => {
                     {line_item.variant.title}
                 </div>
                 <button onClick={() => incQuant()}>+</button>
-                <button onClick={() => decQuant()}>-</button>
+                <button onClick={() => decQuant()}>
+                    {line_item.quantity > 1 ? '-' : 'X'}
+                </button>
                 <div>{line_item.quantity}</div>
                 <div className="lineitem__price">
                     {(line_item.quantity * line_item.variant.price).toFixed(2)}
