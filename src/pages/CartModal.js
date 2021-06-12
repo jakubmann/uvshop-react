@@ -13,7 +13,7 @@ const CartModal = ({setCheckout, client, checkout, visible}) => {
         const newTotal = checkout?.lineItems
             ? countTotal(checkout.lineItems)
             : 0
-        setTotal(newTotal)
+        setTotal(newTotal.toFixed(2))
     }, [checkout.lineItems])
 
     return (
