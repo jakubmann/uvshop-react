@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router'
+//import {useHistory} from 'react-router'
 import VariantSelector from './VariantSelector'
 
 const Tabule = (props) => {
     //default prop objects
     const product = props.product
     const variants = product.variants
-    const history = useHistory()
+    //const history = useHistory()
 
     const [quantity, setQuantity] = useState(1)
     const [variant, setVariant] = useState(
@@ -25,13 +25,9 @@ const Tabule = (props) => {
         <div className="tabule">
             <div className="tabule__content">
                 <h1 className="tabule__title">{product.title}</h1>
-                <div
-                    className="tabule__desc"
-                    //???
-                    dangerouslySetInnerHTML={{
-                        __html: product.attrs.descriptionHtml.value,
-                    }}
-                />
+                <div className="tabule__desc">
+                    {product.attrs.description.value}
+                </div>
                 <div className="tabule__bottom">
                     <VariantSelector
                         handleVariant={handleVariant}

@@ -47,6 +47,7 @@ const Home = (props) => {
                             src={p.images[0].src}
                             width="200px"
                             height="200px"
+                            alt={p.title}
                         />
                     </div>
                 ))}

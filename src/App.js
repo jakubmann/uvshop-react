@@ -3,8 +3,8 @@ import {Switch, Route, BrowserRouter as Router} from 'react-router-dom'
 
 import Home from './pages/Home'
 import Product from './pages/Product'
+import NotFound from './pages/NotFound'
 import CartModal from './pages/CartModal'
-import Cart from './components/Cart'
 
 const App = (props) => {
     const {client} = props
@@ -23,6 +23,14 @@ const App = (props) => {
         initCheckoutAndProducts()
     }, [initCheckoutAndProducts])
 
+    const openCart = () => {
+        setCartVisible(true)
+    }
+
+    const closeCart = () => {
+        setCartVisible(false)
+    }
+
     const addVariantToCart = async (variantId, quantity) => {
         const newCheckout = await client?.checkout?.addLineItems(checkout?.id, [
             {variantId, quantity: parseInt(quantity, 10)},
@@ -34,12 +42,12 @@ const App = (props) => {
 
     return (
         <div>
-            <Cart openCart={() => setCartVisible(true)} />
             <CartModal
                 client={client}
                 checkout={checkout}
                 setCheckout={setCheckout}
                 visible={cartVisible}
+                closeCart={closeCart}
             />
             <Router>
                 <Switch>
@@ -48,12 +56,13 @@ const App = (props) => {
                             products={products}
                             client={client}
                             addToCart={addVariantToCart}
+                            openCart={openCart}
                         />
                     </Route>
-                    <Route path="/cart"></Route>
-                    <Route path="/">
+                    <Route exact path="/">
                         <Home products={products} />
                     </Route>
+                    <Route component={NotFound} />
                 </Switch>
             </Router>
         </div>

@@ -3,12 +3,14 @@
     height: 90%;
     display: flex;
     overflow: hidden;
-    border-radius: 50px;
-    border: 5px solid black;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
 
     &__container {
+        backdrop-filter: blur(30px);
+        opacity: 0.98;
+        background: url('../assets/main/cart.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
         z-index: 5;
         width: 100vw;
         height: 100vh;
@@ -17,7 +19,6 @@
         justify-content: center;
         align-items: center;
         visibility: visible;
-        opacity: 1;
         transition: all 0.5s ease-in-out;
         &--hidden {
             visibility: hidden;
@@ -41,13 +42,10 @@
         flex: 1;
         height: 100%;
         float: left;
-        background-color: rgba(51, 87, 9, 0.5);
     }
 
     &__right {
         font-family: 'Crimson Pro', serif;
-        //border-top-right-radius: 100px;
-        //border-bottom-right-radius: 100px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -55,7 +53,6 @@
         flex: 0.5;
         height: 100%;
         float: right;
-        background-color: white;
     }
 
     &__total {

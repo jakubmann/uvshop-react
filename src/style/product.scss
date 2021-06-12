@@ -40,22 +40,19 @@
 
             &__bottom {
                 display: flex;
-                width: 90%;
                 margin: 0 auto;
             }
 
             &__quantity {
                 font-family: 'Crimson Pro', serif;
+                font-size: 2.5vh;
                 font-weight: bold;
-                height: 90%;
-                padding: 17px 14px;
-                display: inline-block;
                 outline: 0;
                 border: 1px solid #000000;
                 border-radius: 14px;
                 background: rgba(0, 0, 0, 0.1);
                 color: #000000;
-                appearance: none;
+                display: block;
             }
 
             &__content {
@@ -86,24 +83,18 @@
             }
             .select {
                 position: relative;
-                display: inline-block;
-                height: 90%;
             }
             .select select {
                 font-family: 'Crimson Pro', serif;
-                display: inline-block;
+                font-size: 2.5vh;
+                display: block;
                 cursor: pointer;
-                padding: 17px 14px;
                 outline: 0;
                 border-radius: 14px;
                 color: #000000;
-                appearance: none;
                 background: rgba(0, 0, 0, 0.1);
                 border: 1px solid black;
                 font-weight: bold;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                height: 90%;
             }
             .select select::-ms-expand {
                 display: none;
@@ -130,8 +121,7 @@
             }
             &__add {
                 font-family: 'Crimson Pro', serif;
-                padding: 17px 14px;
-                display: inline-block;
+                font-size: 2.5vh;
                 outline: 0;
                 border: 0px solid #000000;
                 border-radius: 14px;
@@ -140,6 +130,7 @@
                 font-weight: bold;
                 color: #000000;
                 appearance: none;
+                display: block;
             }
         }
     }
