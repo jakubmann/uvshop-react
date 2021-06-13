@@ -4,6 +4,7 @@
     width: 100vw;
     height: 100%;
     background: no-repeat top/100% url('../assets/main/vetev.png');
+    z-index: 2;
 
     &__groups {
         pointer-events: all;

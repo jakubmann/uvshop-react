@@ -39,11 +39,11 @@ const Home = (props) => {
                 {visibleProducts.map((p) => (
                     <div
                         key={p.id}
-                        className="product"
+                        className="product-small"
                         onClick={() => handleClick(p.handle)}
                     >
-                        {p.title}
                         <img
+                            className="product-small__image"
                             src={p.images[0].src}
                             width="200px"
                             height="200px"

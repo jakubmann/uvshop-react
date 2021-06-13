@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import LineItem from '../components/LineItem'
 
-const CartModal = ({setCheckout, client, checkout, visible}) => {
+const CartModal = ({setCheckout, client, checkout, visible, closeCart}) => {
     const [total, setTotal] = useState(0)
     const countTotal = (lineItems) =>
         lineItems.reduce(
@@ -25,6 +25,7 @@ const CartModal = ({setCheckout, client, checkout, visible}) => {
             }
         >
             <div className="cartmodal">
+                <div className="cartmodal__close" onClick={closeCart}></div>
                 <div className="cartmodal__left">
                     <div className="cartmodal__products">
                         {checkout?.lineItems?.map((line_item) => (

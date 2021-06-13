@@ -1,16 +1,5 @@
-.cart {
-    background-image: url('../assets/product/cart.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 36vw;
-    height: 35vh;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 4;
-}
-
 .product {
+    position: relative;
     width: 100vw;
     height: 100vh;
     background: transparent;
