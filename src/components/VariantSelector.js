@@ -14,7 +14,7 @@ const VariantSelector = (props) => {
                         {variant.title}
                     </option>
                 ))}
-                <div class="select__arrow"></div>
+                <div className="select__arrow"></div>
             </select>
         </div>
     )

@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 //import {useHistory} from 'react-router'
+import {useTranslation} from 'react-i18next'
+
 import VariantSelector from './VariantSelector'
 
 const Tabule = (props) => {
+    const {product} = props
+    const {t} = useTranslation()
     //default prop objects
-    const product = props.product
     const variants = product.variants
     //const history = useHistory()
 
@@ -28,26 +31,33 @@ const Tabule = (props) => {
                 <div className="tabule__desc">
                     {product.attrs.description.value}
                 </div>
+                <h2 className="tabule__price">{variants[0].price} Kč</h2>
                 <div className="tabule__bottom">
-                    <VariantSelector
-                        handleVariant={handleVariant}
-                        variants={variants}
-                    />
-                    <input
-                        className="tabule__quantity"
-                        min="1"
-                        type="number"
-                        value={quantity}
-                        onChange={handleQuantity}
-                    ></input>
-                    <h2 className="tabule__price">{variant.price}</h2>
+                    {variant && (
+                        <VariantSelector
+                            handleVariant={handleVariant}
+                            variants={variants}
+                        />
+                    )}
+                    {variant && (
+                        <input
+                            className="tabule__quantity"
+                            min="1"
+                            type="number"
+                            value={quantity}
+                            onChange={handleQuantity}
+                        />
+                    )}
 
-                    <button
-                        className="tabule__add"
-                        onClick={() => props.addToCart(variant, quantity)}
-                    >
-                        Add To Cart
-                    </button>
+                    {variant && (
+                        <button
+                            className="tabule__add"
+                            onClick={() => props.addToCart(variant, quantity)}
+                        >
+                            {t('buy')}
+                        </button>
+                    )}
+                    {!variant && <p className="tabule__soldout">SOLD OUT</p>}
                 </div>
             </div>
         </div>

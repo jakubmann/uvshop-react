@@ -4,28 +4,96 @@
     width: 100vw;
     background: no-repeat fixed url('../assets/main/bg.png');
 
+    &__link {
+        background: no-repeat url('../assets/nav/domu.png');
+        top: 19.5vw;
+        left: 4.5vw;
+        height: 10vw;
+        width: 10vw;
+        background-size: contain;
+        position: absolute;
+        z-index: 21;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .trunk {
-        height: 100%;
+        height: 300vh;
+        &__empty {
+            font: {
+                family: 'Crimson Pro', serif;
+                size: 50px;
+            }
+            color: white;
+        }
+        $width_phone: 150px;
+        $width: 200px;
         background: repeat-y center url('../assets/main/kmen.png');
         width: 100%;
-        background-size: 100% 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: flex-start;
-        flex-direction: row;
-        padding-top: 40vh;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        background-size: 100%;
+
+        @media screen and (max-width: $phone) {
+            height: 450vh;
+        }
+
+        &__products {
+            height: 100vh;
+            width: 70%;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            padding-top: 40vh;
+            padding-bottom: 20vh;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
     }
 
     .product-select {
+        z-index: 20;
     }
 
     .product-small {
-        width: 33%;
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.07);
+        }
+        transition: transform 1s;
+        $width_phone: 150px;
+        $width: 200px;
+        background-size: cover;
+        margin-left: $width/5;
+        margin-right: $width/5;
+        margin-bottom: $width;
+        @media screen and (max-width: $phone) {
+            margin-bottom: $width_phone/1.5;
+        }
+        background-position: center;
+        height: $width;
+        width: $width;
 
         @media screen and (max-width: $phone) {
-            width: 50%;
+            height: $width_phone;
+            width: $width_phone;
+        }
+
+        &__title {
+            position: absolute;
+            z-index: 5;
+            bottom: -(($width / 20) * 3);
+            @media screen and (max-width: $phone) {
+                bottom: -(($width_phone / 20) * 3);
+            }
+            font: {
+                family: 'Crimson Pro', serif;
+                weight: bold;
+                size: 2vw;
+            }
+            display: block;
+            width: 100%;
+            text-align: center;
         }
 
         &__image {
@@ -38,18 +106,39 @@
         }
         position: relative;
 
-        &::after {
-            content: '';
+        &__border {
             position: absolute;
-            top: 0;
             z-index: 4;
-            width: 100%;
-            height: 100%;
-            background-image: url('../assets/homepage/foto1.png');
-            background-size: cover;
-            background-position-y: top;
+            background-position: center;
+            background-size: contain;
             background-repeat: no-repeat;
-            border: 1px solid red;
+            left: -($width / 4);
+            top: -($width / 10);
+            width: $width * 1.5;
+            height: $width * 1.5;
+            @media screen and (max-width: $phone) {
+                left: -($width_phone / 4);
+                top: -($width_phone / 10);
+                width: $width_phone * 1.5;
+                height: $width_phone * 1.5;
+            }
+        }
+        &__pin {
+            position: absolute;
+            z-index: 5;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: -($width/4);
+            top: -$width;
+            width: $width * 1.5;
+            height: $width * 1.5;
+            @media screen and (max-width: $phone) {
+                left: -($width_phone/4);
+                top: -$width_phone;
+                width: $width_phone * 1.5;
+                height: $width_phone * 1.5;
+            }
         }
     }
 }

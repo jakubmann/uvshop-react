@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import LineItem from '../components/LineItem'
 
 const CartModal = ({setCheckout, client, checkout, visible, closeCart}) => {
     const [total, setTotal] = useState(0)
+    const {t} = useTranslation()
     const countTotal = (lineItems) =>
         lineItems.reduce(
             (acc, val) => acc + val.variant.price * val.quantity,
@@ -45,7 +47,7 @@ const CartModal = ({setCheckout, client, checkout, visible, closeCart}) => {
                         onClick={() => window.open(checkout.webUrl)}
                         className="cartmodal__checkout"
                     >
-                        BUY
+                        {t('buy')}
                     </button>
                 </div>
             </div>

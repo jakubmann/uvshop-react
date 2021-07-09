@@ -8,16 +8,52 @@
 
     &__groups {
         pointer-events: all;
-        margin-top: 10%;
         display: flex;
         width: 100%;
-        padding-left: 20%;
+        padding-left: 10%;
+        position: relative;
+        height: 20vw;
     }
 
-    &__group {
-        color: white;
-        font-weight: bold;
-        font-size: 3em;
-        padding-right: 5%;
+    &__horni {
+        position: absolute;
+        width: 20vw;
+        top: 7vw;
+        left: 10vw;
+        height: 100%;
+        background-image: url('../assets/nav/horni.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__dolni {
+        position: absolute;
+        width: 20vw;
+        top: 1.6vw;
+        left: 27vw;
+        height: 100%;
+        background-image: url('../assets/nav/dolni.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__other {
+        position: absolute;
+        width: 20vw;
+        top: 3.5vw;
+        left: 45vw;
+        height: 100%;
+        background-image: url('../assets/nav/ostatni.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

@@ -36,8 +36,8 @@ const App = (props) => {
             {variantId, quantity: parseInt(quantity, 10)},
         ])
         console.log('client?')
-        console.log(client.checkout)
         setCheckout(newCheckout)
+        setCartVisible(true)
     }
 
     return (
